@@ -3,17 +3,49 @@ import "./App.css";
 import CountdownTimer from "./countdownTimer";
 
 class App extends Component {
+  data = [
+    { label: "20 SEC", seconds: 20 },
+    { label: "5 MIN", seconds: 300 },
+    { label: "20 Min", seconds: 1200 }
+  ];
+
+  state = {
+    currentCountdownTime: null
+  };
+
+  input = React.createRef();
+
+  setCurentCountdownTime = seconds => {
+    this.setState({ currentCountdownTime: parseInt(seconds) });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    this.setCurentCountdownTime(this.input.current.value);
+  };
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <button>20 SEC</button>
-          <button>5 MIN</button>
-          <button>20 MIN</button>
+          {this.data.map((d, index) => (
+            <button
+              key={index}
+              onClick={() => this.setCurentCountdownTime(d.seconds)}
+            >
+              {d.label}
+            </button>
+          ))}
+          <form onSubmit={this.handleSubmit}>
+            <input type="text" ref={this.input} />
+          </form>
         </header>
 
         <div className="main">
-          <CountdownTimer />
+          <CountdownTimer
+            seconds={this.state.currentCountdownTime}
+            isDisplayEndTime={true}
+          />
         </div>
       </div>
     );

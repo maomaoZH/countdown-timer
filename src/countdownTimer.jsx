@@ -6,7 +6,6 @@ class CountdownTimer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      seconds: 120,
       displayTimeLeft: "",
       displayEndTime: ""
     };
@@ -31,7 +30,7 @@ class CountdownTimer extends Component {
     });
   }
 
-  timer(seconds) {
+  renderTimer(seconds) {
     clearInterval(countdown);
     const now = Date.now();
     const then = now + seconds * 1000;
@@ -48,18 +47,24 @@ class CountdownTimer extends Component {
     }, 1000);
   }
 
-  componentDidMount() {
-    this.timer(this.state.seconds);
+  componentDidUpdate(prevProps) {
+    if (prevProps.seconds !== this.props.seconds) {
+      this.renderTimer(this.props.seconds);
+    }
   }
 
   render() {
+    const { displayTimeLeft, displayEndTime } = this.state;
     return (
       <div>
-        <div>{this.state.displayTimeLeft}</div>
-        <div>
-          be back at
-          {this.state.displayEndTime}
-        </div>
+        <div>{displayTimeLeft || "00:00"}</div>
+        {displayTimeLeft &&
+          this.props.isDisplayEndTime && (
+            <div>
+              be back at
+              {displayEndTime}
+            </div>
+          )}
       </div>
     );
   }

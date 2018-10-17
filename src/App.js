@@ -22,14 +22,16 @@ class App extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.setCurentCountdownTime(this.input.current.value);
+    this.input.current.value = "";
   };
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
+      <div className="app">
+        <div className="buttonGroup">
           {this.data.map((d, index) => (
             <button
+              className="button"
               key={index}
               onClick={() => this.setCurentCountdownTime(d.seconds)}
             >
@@ -37,12 +39,18 @@ class App extends Component {
             </button>
           ))}
           <form onSubmit={this.handleSubmit}>
-            <input type="text" ref={this.input} />
+            <input
+              className="input"
+              type="text"
+              ref={this.input}
+              placeholder="set custom seconds"
+            />
           </form>
-        </header>
-
-        <div className="main">
+        </div>
+        <div>
           <CountdownTimer
+            timerWrapperClass="timerWrapper"
+            timerClass="timer"
             seconds={this.state.currentCountdownTime}
             isDisplayEndTime={true}
           />

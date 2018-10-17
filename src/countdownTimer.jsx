@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import ResetTimer from "./resetTimer";
+import formatTime from "./helper/formatTime";
 
 let countdown;
 
@@ -22,11 +24,10 @@ class CountdownTimer extends Component {
 
   displayTimeLeft(seconds) {
     const minutesLeft = Math.floor(seconds / 60);
+    const hoursLeft = Math.floor(minutesLeft / 60);
     const remainSecondsLeft = seconds % 60;
     this.setState({
-      displayTimeLeft: `${minutesLeft}: ${
-        remainSecondsLeft < 10 ? "0" : ""
-      }${remainSecondsLeft}`
+      displayTimeLeft: formatTime(hoursLeft, minutesLeft, remainSecondsLeft)
     });
   }
 
@@ -47,6 +48,13 @@ class CountdownTimer extends Component {
     }, 1000);
   }
 
+  resetTimer = () => {
+    clearInterval(countdown);
+    this.setState({
+      displayTimeLeft: ""
+    });
+  };
+
   componentDidUpdate(prevProps) {
     if (prevProps.seconds !== this.props.seconds) {
       this.renderTimer(this.props.seconds);
@@ -55,17 +63,21 @@ class CountdownTimer extends Component {
 
   render() {
     const { displayTimeLeft, displayEndTime } = this.state;
+    const { timerWrapperClass, timerClass, isDisplayEndTime } = this.props;
     return (
-      <div>
-        <div>{displayTimeLeft || "00:00"}</div>
+      <React.Fragment>
+        <div className={timerWrapperClass}>
+          <div className={timerClass}>{displayTimeLeft || "00:00:00"}</div>
+        </div>
+        <ResetTimer handleClick={this.resetTimer} />
         {displayTimeLeft &&
-          this.props.isDisplayEndTime && (
+          isDisplayEndTime && (
             <div>
-              be back at
+              Be back at
               {displayEndTime}
             </div>
           )}
-      </div>
+      </React.Fragment>
     );
   }
 }

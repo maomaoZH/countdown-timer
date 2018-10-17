@@ -1,14 +1,52 @@
-.App {
+.app {
   text-align: center;
-}
-
-.App-header {
-  min-height: 60px;
+  height: 100vh;
+  background-image: radial-gradient(circle, #ffae2a, #ffb948);
   display: flex;
-  background-color: #282c34;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  overflow: auto;
+  padding: 48px;
+}
+
+.buttonGroup {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  height: 36px;
+  margin: 0 12px;
+  width: 80px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #ececec;
+}
+
+.input {
+  height: 36px;
+  margin: 0 12px;
+  border-radius: 4px;
+  border: none;
+  padding: 6px 12px;
+}
+
+.timerWrapper {
+  background-image: radial-gradient(#595455, #525252);
+  border-radius: 8px;
+  padding: 12px;
+  color: #ffffff;
+  margin: 24px;
+  width: 300px;
+}
+.timer {
+  font-size: 50px;
 }

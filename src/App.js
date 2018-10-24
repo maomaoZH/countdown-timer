@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import CountdownTimer from "./countdownTimer";
+import CountdownTimer from "react-countdown-timer-component";
 
 class App extends Component {
   data = [
@@ -53,6 +53,7 @@ class App extends Component {
             timerClass="timer"
             seconds={this.state.currentCountdownTime}
             isDisplayEndTime={true}
+            isDisplayResetButton={true}
           />
         </div>
       </div>

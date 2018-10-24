@@ -5,6 +5,7 @@
   "homepage": "https://maomaozh.github.io/countdown-timer",
   "dependencies": {
     "react": "^16.5.2",
+    "react-countdown-timer-component": "^1.0.0",
     "react-dom": "^16.5.2",
     "react-scripts": "2.0.4"
   },

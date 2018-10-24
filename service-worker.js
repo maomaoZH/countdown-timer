@@ -11,10 +11,10 @@
  * See https://goo.gl/2aRDsh
  */
 
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.2/workbox-sw.js");
+importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/countdown-timer/precache-manifest.7e22f6991c1de49b4a091ee91e1b3905.js"
+  "/countdown-timer/precache-manifest.900a4dca8c5986cf5b89b5dcb10c22ea.js"
 );
 
 workbox.clientsClaim();

@@ -1,5 +1,5 @@
 
-# react-countdown-timer
+# countdown-timer-demo
 A customer react countdown timer based on create-react-app
 see deploy version at https://maomaozh.github.io/countdown-timer/
 ## demo

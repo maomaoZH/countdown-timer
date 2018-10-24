@@ -27,7 +27,11 @@ class CountdownTimer extends Component {
     const hoursLeft = Math.floor(minutesLeft / 60);
     const remainSecondsLeft = seconds % 60;
     this.setState({
-      displayTimeLeft: formatTime(hoursLeft, minutesLeft, remainSecondsLeft)
+      displayTimeLeft: formatTime(
+        hoursLeft,
+        Math.floor(minutesLeft % 60),
+        remainSecondsLeft
+      )
     });
   }
 
